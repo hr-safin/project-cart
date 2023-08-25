@@ -17,20 +17,49 @@ document.getElementById("inc1").addEventListener("click", function () {
   const firstPrice = document.getElementById("first-price");
   const firstPriceValue = parseFloat(firstPrice.innerText);
 
-  const purchase = document.getElementById("purchase-btn");
-  purchase.disabled = true;
   countPriceValue = countPriceValue + price1;
   countPrice.innerText = countPriceValue.toFixed(2);
-  total.innerText = countPriceValue.toFixed(2);
+  total.innerText = (countPriceValue + 5).toFixed(2);
   firstPrice.innerText = (firstPriceValue + 44).toFixed(2);
   countItem.innerText = count1;
   input1.value = count1;
+
+  const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
 
   if (countPriceValue > 0) {
     purchase.disabled = false;
   } else {
     purchase.disabled = true;
   }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    firstPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count1 =0
+    input1.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
+    }
+  });
 });
 
 const decCrementButton1 = document.getElementById("dec1");
@@ -44,22 +73,50 @@ decCrementButton1.addEventListener("click", function () {
 
     countPriceValue = countPriceValue - price1;
     countPrice.innerText = countPriceValue.toFixed(2);
-    total.innerText = countPriceValue.toFixed(2);
+    total.innerText = (countPriceValue + 5).toFixed(2);
     firstPrice.innerText = (firstPriceValue - 44).toFixed(2);
     countItem.innerText = count1;
     input1.value = count1;
-
-    const purchase = document.getElementById("purchase-btn");
-    purchase.disabled = true;
-    if (countPriceValue > 0) {
-        purchase.disabled = false;
-      } else {
-        purchase.disabled = true;
+    if (count2 === 0) {
+        decCrementButton2.setAttribute("disabled", true);
       }
 
-    if (count1 === 0) {
-      decCrementButton1.setAttribute("disabled", true);
+    const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
+
+  if (countPriceValue > 0) {
+    purchase.disabled = false;
+  } else {
+    purchase.disabled = true;
+  }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    firstPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count1 =0
+    input1.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
     }
+  });
   }
 });
 
@@ -73,17 +130,46 @@ document.getElementById("inc2").addEventListener("click", function () {
 
   countPriceValue = countPriceValue + price2;
   countPrice.innerText = countPriceValue.toFixed(2);
-  total.innerText = countPriceValue.toFixed(2);
+  total.innerText = (countPriceValue + 5).toFixed(2);
   secondPrice.innerText = (secondPriceValue + 100).toFixed(2);
   countItem.innerText = count2;
   input2.value = count2;
   const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
+
+  if (countPriceValue > 0) {
+    purchase.disabled = false;
+  } else {
     purchase.disabled = true;
-    if (countPriceValue > 0) {
-        purchase.disabled = false;
-      } else {
-        purchase.disabled = true;
-      }
+  }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    secondPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count2 =0
+    input2.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
+    }
+  });
 });
 
 const decCrementButton2 = document.getElementById("dec2");
@@ -97,21 +183,50 @@ decCrementButton2.addEventListener("click", function () {
 
     countPriceValue = countPriceValue - price2;
     countPrice.innerText = countPriceValue.toFixed(2);
-    total.innerText = countPriceValue.toFixed(2);
+    total.innerText = (countPriceValue + 5).toFixed(2);
     secondPrice.innerText = (secondPriceValue - 100).toFixed(2);
     countItem.innerText = count2;
     input2.value = count2;
-    const purchase = document.getElementById("purchase-btn");
-    purchase.disabled = true;
-    if (countPriceValue > 0) {
-        purchase.disabled = false;
-      } else {
-        purchase.disabled = true;
-      }
 
     if (count2 === 0) {
       decCrementButton2.setAttribute("disabled", true);
     }
+    const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
+
+  if (countPriceValue > 0) {
+    purchase.disabled = false;
+  } else {
+    purchase.disabled = true;
+  }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    secondPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count2 =0
+    input2.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
+    }
+  });
   }
 });
 
@@ -125,17 +240,46 @@ document.getElementById("inc3").addEventListener("click", function () {
 
   countPriceValue = countPriceValue + price3;
   countPrice.innerText = countPriceValue.toFixed(2);
-  total.innerText = countPriceValue.toFixed(2);
+  total.innerText = (countPriceValue + 5).toFixed(2);
   thirdPrice.innerText = (thirdPriceValue + 120).toFixed(2);
   countItem.innerText = count2;
   input3.value = count2;
   const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
+
+  if (countPriceValue > 0) {
+    purchase.disabled = false;
+  } else {
     purchase.disabled = true;
-    if (countPriceValue > 0) {
-        purchase.disabled = false;
-      } else {
-        purchase.disabled = true;
-      }
+  }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    thirdPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count3 =0
+    input3.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
+    }
+  });
 });
 
 const decCrementButton3 = document.getElementById("dec3");
@@ -149,19 +293,48 @@ decCrementButton3.addEventListener("click", function () {
 
     countPriceValue = countPriceValue - price3;
     countPrice.innerText = countPriceValue.toFixed(2);
-    total.innerText = countPriceValue.toFixed(2);
+    total.innerText = (countPriceValue + 5).toFixed(2);
     thirdPrice.innerText = (thirdPriceValue - 120).toFixed(2);
     countItem.innerText = count3;
     input3.value = count3;
-    const purchase = document.getElementById("purchase-btn");
-    purchase.disabled = true;
-    if (countPriceValue > 0) {
-        purchase.disabled = false;
-      } else {
-        purchase.disabled = true;
-      }
     if (count3 === 0) {
       decCrementButton3.setAttribute("disabled", true);
     }
+    const purchase = document.getElementById("purchase-btn");
+  purchase.disabled = true;
+
+  if (countPriceValue > 0) {
+    purchase.disabled = false;
+  } else {
+    purchase.disabled = true;
+  }
+
+  purchase.addEventListener("click", function () {
+    alert("you purchase the product");
+    countPrice.innerText = "0.00"
+    total.innerText = "0.00"
+    thirdPrice.innerText = "0.00"
+    countItem.innerText = "";
+    count3 =0
+    input3.value = "0";
+    countPriceValue = 0
+  });
+  const promoCode = document.getElementById("promo-code");
+  const discountButton = document.getElementById("discount-btn");
+  discountButton.disabled = true;
+  if (countPriceValue >= 200) {
+    discountButton.disabled = false;
+  } else {
+    discountButton.disabled = true;
+  }
+  discountButton.addEventListener("click", function () {
+    if (promoCode.value === "SELL200" && countPriceValue >= 200) {
+      const grandTotal = countPriceValue * 0.2;
+      const newTotal = countPriceValue - grandTotal;
+      total.innerText = newTotal.toFixed(2);
+      promoCode.value = "";
+      discountButton.disabled = true;
+    }
+  });
   }
 });
